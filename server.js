@@ -63,6 +63,11 @@ app.prepare().then(() => {
     res.sendStatus(404);
   })
 
+  server.post('/api/logout', (req, res) => {
+    res.clearCookie('token', COOKIE_OPTIONS)
+    res.sendStatus(204);
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res);
   })
